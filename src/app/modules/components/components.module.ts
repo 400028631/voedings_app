@@ -6,17 +6,8 @@ import { DrankenPage } from 'src/app/pages/user/dranken/dranken.page';
 import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.page';
 
 @NgModule({
-    imports: [
-      IonicModule.forRoot()
-  ],
-  declarations: [ UserHeaderComponent, MenuPage, DrankenPage, GeschiedenisPage ],
-  exports: [
-    UserHeaderComponent,
-    MenuPage,
-    DrankenPage,
-    GeschiedenisPage
-  ]
+  imports: [IonicModule.forRoot()],
+  declarations: [UserHeaderComponent, MenuPage, DrankenPage, GeschiedenisPage],
+  exports: [UserHeaderComponent, MenuPage, DrankenPage, GeschiedenisPage],
 })
-
-
-export class ComponentsModule { }
+export class ComponentsModule {}

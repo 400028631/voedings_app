@@ -1,3 +1,35 @@
 <ion-content>
-
+  <div class="ion-margin">
+    <h1 class="ion-text-center">
+      Ziekenhuis gelderse vallei pattiënt login
+    </h1>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col sizeMd="6" sizeSm="12" sizeXs="12">
+          <ion-item>
+            <ion-label position="floating">Patiëntnummer</ion-label>
+            <ion-input [(ngModel)]="loginData.nummer" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Wachtwoord</ion-label>
+            <ion-input
+              [(ngModel)]="loginData.wachtwoord"
+              type="password"
+            ></ion-input>
+          </ion-item>
+          <ion-button (click)="login()" class="ion-margin">Inloggen</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <img
+      src="https://www.geldersevallei.nl/papo/theme/themes/zgv/images/logo.png"
+      class="logo"
+      alt=""
+    />
+  </ion-toolbar>
+</ion-footer>
