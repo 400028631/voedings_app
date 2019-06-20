@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' },
 
   //route under here should be 404
-  { path: '**', redirectTo: 'login', 'pathMatch': 'full'},
+  { path: '**', redirectTo: 'login', pathMatch: 'full'},
 
 
 
