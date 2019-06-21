@@ -1,5 +1,6 @@
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-user',
@@ -7,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-  constructor(private data: DataService) {}
-
-  ngOnInit() {
-    this.data.getUserdata((user) => {
-      console.log(user);
-    });
+  constructor(private data: DataService, private db: AngularFirestore) {
+    db.collection('test')
+      .get()
+      .subscribe((output) => {
+        output.docs.forEach((persoon) => {
+          console.log(persoon.data().naam);
+        });
+      });
   }
+
+  ngOnInit() {}
 }

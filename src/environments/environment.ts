@@ -4,6 +4,15 @@
 
 export const environment = {
   production: false,
+  firebase: {
+    apiKey: 'AIzaSyDW4Nx9E74sepNRp7pMwD57O8XUeniTq_k',
+    authDomain: 'voedings-app.firebaseapp.com',
+    databaseURL: 'https://voedings-app.firebaseio.com',
+    projectId: 'voedings-app',
+    storageBucket: 'voedings-app.appspot.com',
+    messagingSenderId: '722531696357',
+    appId: '1:722531696357:web:3efe0b4c6c567ffc',
+  },
 };
 
 /*

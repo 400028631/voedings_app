@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -7,34 +8,45 @@ import { Router } from '@angular/router';
 })
 export class DataService {
   public baseUrl: string = 'https://voedingapi.000webhostapp.com/public';
-  constructor(private http: HttpClient, private router: Router) {}
 
-  Login(patientnummer: any, wachtwoord: string) {
-    let body = new FormData();
-    body.append('patientnummer', patientnummer);
-    body.append('wachtwoord', wachtwoord);
+  public userData: any = null;
 
-    this.http
-      .post(`${this.baseUrl}/auth/login`, body)
-      .subscribe((result: any) => {
-        localStorage.setItem('token', result.token);
-        this.router.navigate(['user']);
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private db: AngularFirestore,
+  ) {}
+
+  login(nummer: number) {
+    this.db
+      .collection('patient', (ref) => ref.where('nummer', '==', nummer))
+      .get()
+      .subscribe((patient) => {
+        if (patient.docs.length > 0) {
+          //ingelogd
+          this.userData = patient.docs[0].data();
+          this.router.navigate(['user']);
+        } else {
+          //niet ingelogd
+          alert('Dit klopt niet');
+        }
       });
   }
 
-  logout() {
-    localStorage.clear();
-    this.router.navigate(['login']);
-  }
+  register(nummer: number, naam: string, achternaam: string, geslacht: string) {
+    var newpatient = this.db.collection('patient').add({
+      nummer: nummer,
+      voornaam: naam,
+      achternaam: achternaam,
+      geslacht: geslacht,
+    });
 
-  getUserdata(callback?: (user: any) => void) {
-    var body = new FormData();
-    body.append('token', localStorage.getItem('token'));
+    newpatient.then((success) => {
+      alert('account aangemaakt');
+    });
 
-    this.http.post(`${this.baseUrl}/auth/user`, body).subscribe((user) => {
-      if (callback) {
-        callback(user);
-      }
+    newpatient.catch((error) => {
+      alert('fout bij aanmaken');
     });
   }
 }
