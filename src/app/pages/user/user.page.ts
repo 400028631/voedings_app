@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-
-  constructor() { }
+  constructor(private data: DataService) {}
 
   ngOnInit() {
+    this.data.getUserdata((user) => {
+      console.log(user);
+    });
   }
-
 }
