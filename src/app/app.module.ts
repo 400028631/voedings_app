@@ -12,6 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './modules/components/components.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+//firebase imports
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     ComponentsModule,
     FormsModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
   providers: [
     StatusBar,

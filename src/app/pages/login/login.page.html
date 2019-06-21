@@ -8,16 +8,12 @@
         <ion-col sizeMd="6" sizeSm="12" sizeXs="12">
           <ion-item>
             <ion-label position="floating">Patiëntnummer</ion-label>
-            <ion-input [(ngModel)]="loginData.nummer" type="text"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Wachtwoord</ion-label>
-            <ion-input
-              [(ngModel)]="loginData.wachtwoord"
-              type="password"
-            ></ion-input>
+            <ion-input [(ngModel)]="loginData.nummer" type="number"></ion-input>
           </ion-item>
           <ion-button (click)="login()" class="ion-margin">Inloggen</ion-button>
+          <ion-button (click)="register()" class="ion-margin"
+            >account aanmaken</ion-button
+          >
         </ion-col>
       </ion-row>
     </ion-grid>
