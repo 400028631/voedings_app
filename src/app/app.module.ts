@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ComponentsModule } from './modules/components/components.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -20,6 +22,7 @@ import { ComponentsModule } from './modules/components/components.module';
     AppRoutingModule,
     ComponentsModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [
     StatusBar,

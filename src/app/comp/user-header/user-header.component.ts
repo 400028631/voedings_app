@@ -1,3 +1,4 @@
+import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,13 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-header.component.scss'],
 })
 export class UserHeaderComponent implements OnInit {
-
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router, private data: DataService) {}
 
   ngOnInit() {}
-
 
   menu() {
     this.router.navigate(['user/menu']);
