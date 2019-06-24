@@ -1,15 +1,15 @@
-import { AngularFirestore } from '@angular/fire/firestore'
-import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
-import { Router } from '@angular/router'
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  public baseUrl: string = 'https://voedingapi.000webhostapp.com/public'
+  public baseUrl: string = 'https://voedingapi.000webhostapp.com/public';
 
-  public userData: any = null
+  public userData: any = null;
 
   constructor(
     private http: HttpClient,
@@ -24,29 +24,29 @@ export class DataService {
       .subscribe((patient) => {
         if (patient.docs.length > 0) {
           //ingelogd
-          this.userData = patient.docs[0].data()
-          this.router.navigate(['user'])
+          this.userData = patient.docs[0].data();
+          this.router.navigate(['user']);
         } else {
           //niet ingelogd
-          alert('Dit klopt niet')
+          alert('Dit klopt niet');
         }
-      })
+      });
   }
 
   register(nummer: number, naam: string, achternaam: string, geslacht: string) {
-    var newpatient = this.db.collection('patient').add({
+    const newpatient = this.db.collection('patient').add({
       nummer: nummer,
       voornaam: naam,
       achternaam: achternaam,
       geslacht: geslacht,
-    })
+    });
 
     newpatient.then((success) => {
-      alert('account aangemaakt')
-    })
+      alert('account aangemaakt');
+    });
 
     newpatient.catch((error) => {
-      alert('fout bij aanmaken')
-    })
+      alert('fout bij aanmaken');
+    });
   }
 }
