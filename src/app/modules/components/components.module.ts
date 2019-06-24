@@ -1,3 +1,4 @@
+import { ItemPage } from './../../pages/user/menu/item/item.page';
 import { NgModule } from '@angular/core';
 import { UserHeaderComponent } from 'src/app/comp/user-header/user-header.component';
 import { IonicModule } from '@ionic/angular';
@@ -7,7 +8,19 @@ import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.p
 
 @NgModule({
   imports: [IonicModule.forRoot()],
-  declarations: [UserHeaderComponent, MenuPage, DrankenPage, GeschiedenisPage],
-  exports: [UserHeaderComponent, MenuPage, DrankenPage, GeschiedenisPage],
+  declarations: [
+    UserHeaderComponent,
+    MenuPage,
+    DrankenPage,
+    GeschiedenisPage,
+    ItemPage,
+  ],
+  exports: [
+    UserHeaderComponent,
+    MenuPage,
+    DrankenPage,
+    GeschiedenisPage,
+    ItemPage,
+  ],
 })
 export class ComponentsModule {}
