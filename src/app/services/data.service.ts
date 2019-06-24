@@ -32,21 +32,4 @@ export class DataService {
         }
       });
   }
-
-  register(nummer: number, naam: string, achternaam: string, geslacht: string) {
-    const newpatient = this.db.collection('patient').add({
-      nummer: nummer,
-      voornaam: naam,
-      achternaam: achternaam,
-      geslacht: geslacht,
-    });
-
-    newpatient.then((success) => {
-      alert('account aangemaakt');
-    });
-
-    newpatient.catch((error) => {
-      alert('fout bij aanmaken');
-    });
-  }
 }
