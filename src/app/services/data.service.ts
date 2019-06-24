@@ -14,7 +14,7 @@ export class DataService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private db: AngularFirestore
+    private db: AngularFirestore,
   ) {}
 
   login(nummer: number) {

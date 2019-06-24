@@ -8,15 +8,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-  constructor(private data: DataService, private db: AngularFirestore) {
-    db.collection('test')
-      .get()
-      .subscribe((output) => {
-        output.docs.forEach((persoon) => {
-          console.log(persoon.data().naam);
-        });
-      });
-  }
+  constructor(private data: DataService, private db: AngularFirestore) {}
 
   ngOnInit() {}
 }
