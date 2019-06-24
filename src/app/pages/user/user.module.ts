@@ -10,33 +10,38 @@ import { ComponentsModule } from 'src/app/modules/components/components.module';
 import { MenuPage } from './menu/menu.page';
 import { DrankenPage } from './dranken/dranken.page';
 import { GeschiedenisPage } from './geschiedenis/geschiedenis.page';
+import { ItemPage } from './menu/item/item.page';
 
 const routes: Routes = [
   {
     path: '',
     component: UserPage,
-    children: [      
+    children: [
       {
         path: '',
-        redirectTo: 'menu'
-      },   
+        redirectTo: 'menu',
+      },
       {
         path: 'menu',
-        component: MenuPage
+        component: MenuPage,
       },
       {
         path: 'dranken',
-        component: DrankenPage
+        component: DrankenPage,
       },
       {
         path: 'geschiedenis',
-        component: GeschiedenisPage
-      },      
+        component: GeschiedenisPage,
+      },
+      {
+        path: 'menu/item/:id',
+        component: ItemPage,
+      },
       {
         path: '**',
-        redirectTo: 'menu'
-      },  
-    ]
+        redirectTo: 'menu',
+      },
+    ],
   },
 ];
 
@@ -46,8 +51,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ComponentsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  declarations: [UserPage]
+  declarations: [UserPage],
 })
 export class UserPageModule {}
