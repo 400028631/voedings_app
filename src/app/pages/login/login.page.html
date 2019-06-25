@@ -1,7 +1,7 @@
 <ion-content>
   <div class="ion-margin">
     <h1 class="ion-text-center">
-      Ziekenhuis gelderse vallei pattiënt login
+      Ziekenhuis gelderse vallei patiënt login
     </h1>
     <ion-grid>
       <ion-row class="ion-justify-content-center">
@@ -10,7 +10,7 @@
             <ion-label position="floating">Patiëntnummer</ion-label>
             <ion-input [(ngModel)]="loginData.nummer" type="number"></ion-input>
           </ion-item>
-          <ion-button (click)="login()" class="ion-margin">Inloggen</ion-button>
+          <ion-button href ="user"(click)="login()" class="ion-margin">Inloggen</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
