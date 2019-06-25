@@ -24,7 +24,6 @@ export class MenuPage implements OnInit {
   }
 
   goto(page: string) {
-    console.log(page);
     this.router.navigate([page]);
   }
 }
