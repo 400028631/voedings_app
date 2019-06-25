@@ -1,4 +1,6 @@
+import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { ViewController } from '@ionic/core';
 
 @Component({
   selector: 'app-informatie',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./informatie.page.scss'],
 })
 export class InformatiePage implements OnInit {
+  constructor(private view: ModalController) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  modalClose() {
+    this.view.dismiss();
   }
-
 }
