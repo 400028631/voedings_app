@@ -1,3 +1,4 @@
+import { InformatiePage } from './../../pages/user/menu/informatie/informatie.page';
 import { ItemPage } from './../../pages/user/menu/item/item.page';
 import { NgModule } from '@angular/core';
 import { UserHeaderComponent } from 'src/app/comp/user-header/user-header.component';

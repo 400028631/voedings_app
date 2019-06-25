@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' },
 
   //route under here should be 404
-  { path: '**', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login', pathMatch: 'full' },  { path: 'informatie', loadChildren: './pages/user/menu/informatie/informatie.module#InformatiePageModule' },
+
 ];
 
 @NgModule({
