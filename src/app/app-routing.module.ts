@@ -11,6 +11,12 @@ const routes: Routes = [
   //user page route
   { path: 'user', loadChildren: './pages/user/user.module#UserPageModule' },
 
+  {
+    path: 'menu-item',
+    loadChildren:
+      './pages/import/menu-item/menu-item.module#MenuItemPageModule',
+  },
+
   //route under here should be 404
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
