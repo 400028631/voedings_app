@@ -1,3 +1,4 @@
+import { LunchPage } from './menu/lunch/lunch.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +12,9 @@ import { MenuPage } from './menu/menu.page';
 import { DrankenPage } from './dranken/dranken.page';
 import { GeschiedenisPage } from './geschiedenis/geschiedenis.page';
 import { ItemPage } from './menu/item/item.page';
+import { OntbijtPage } from './menu/ontbijt/ontbijt.page';
+import { AvondetenPage } from './menu/avondeten/avondeten.page';
+import { TussendoortjesPage } from './menu/tussendoortjes/tussendoortjes.page';
 
 const routes: Routes = [
   {
@@ -36,6 +40,22 @@ const routes: Routes = [
       {
         path: 'menu/item/:id',
         component: ItemPage,
+      },
+      {
+        path: 'menu/ontbijt',
+        component: OntbijtPage,
+      },
+      {
+        path: 'menu/lunch',
+        component: LunchPage,
+      },
+      {
+        path: 'menu/avondeten',
+        component: AvondetenPage,
+      },
+      {
+        path: 'menu/tussendoortjes',
+        component: TussendoortjesPage,
       },
       {
         path: '**',

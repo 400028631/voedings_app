@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { InformatiePage } from './informatie/informatie.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +9,10 @@ import { InformatiePage } from './informatie/informatie.page';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-  constructor(private modalController: ModalController) {}
+  constructor(
+    private modalController: ModalController,
+    private router: Router,
+  ) {}
 
   ngOnInit() {}
 
@@ -17,5 +21,10 @@ export class MenuPage implements OnInit {
       component: InformatiePage,
     });
     modal.present();
+  }
+
+  goto(page: string) {
+    console.log(page);
+    this.router.navigate([page]);
   }
 }
