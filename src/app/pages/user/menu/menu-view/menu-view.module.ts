@@ -5,15 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MenuPage } from './menu.page';
-import { ItemPage } from './item/item.page';
-import { ComponentsModule } from 'src/app/modules/components/components.module';
+import { MenuViewPage } from './menu-view.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: MenuPage,
-  },
+    component: MenuViewPage
+  }
 ];
 
 @NgModule({
@@ -21,9 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    ComponentsModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ],
-  declarations: [MenuPage],
+  declarations: [MenuViewPage]
 })
-export class MenuPageModule {}
+export class MenuViewPageModule {}

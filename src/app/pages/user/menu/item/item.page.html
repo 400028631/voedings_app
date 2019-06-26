@@ -4,6 +4,38 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h1>Ontbijt</h1>
+      </ion-col>
+    </ion-row>
+    <ion-card *ngFor="let gerecht of testData">
+      <ion-row padding>
+        <ion-col>
+          <h2>{{ gerecht.naam }}</h2>
+          <ion-img [src]="gerecht.fotoPath"></ion-img>
+        </ion-col>
+        <ion-col>
+          <h2>Opties</h2>
+          <ion-list>
+            <ion-item *ngFor="let ingredient of gerecht.ingredienten">
+              <ion-label>{{ ingredient }}</ion-label>
+              <ion-toggle checked slot="end"></ion-toggle>
+            </ion-item>             
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row padding>
+        <ion-col size="10">
+          <h3>Beschrijving</h3>
+          <p>{{ gerecht.beschrijving }}</p>
+        </ion-col>
+        <ion-col size="auto" class="ion-align-self-end">
+          <ion-button color="primary">Ingrediënten</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
 </ion-content>

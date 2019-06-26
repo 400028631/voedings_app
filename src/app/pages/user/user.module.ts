@@ -1,3 +1,4 @@
+import { MenuViewPage } from './menu/menu-view/menu-view.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'menu/item/:id',
         component: ItemPage,
+      },
+      {
+        path: 'menu/type/:type',
+        component: MenuViewPage,
       },
       {
         path: '**',

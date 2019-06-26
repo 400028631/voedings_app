@@ -19,6 +19,7 @@ import { Shake } from '@ionic-native/shake/ngx';
 //firebase imports
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { InformatiePageModule } from './pages/user/menu/informatie/informatie.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    InformatiePageModule,
   ],
   providers: [
     StatusBar,
