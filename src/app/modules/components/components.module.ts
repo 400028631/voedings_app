@@ -8,7 +8,6 @@ import { IonicModule } from '@ionic/angular';
 import { MenuPage } from 'src/app/pages/user/menu/menu.page';
 import { DrankenPage } from 'src/app/pages/user/dranken/dranken.page';
 import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.page';
-import { CommonModule} from '@angular/common';
 
 @NgModule({
   imports: [IonicModule.forRoot(), CommonModule],
