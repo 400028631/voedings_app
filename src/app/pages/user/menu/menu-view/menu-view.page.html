@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ menu_type }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let item of items">
+        <ion-card>
+          <div class="item_image_holder">
+            <img class="item_image" src="{{ item.data().fotoPath }}" alt="" />
+          </div>
+          <ion-card-header>
+            <ion-card-title>{{ item.data().naam }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            {{ item.data().beschrijving }}
+            <ion-grid>
+              <ion-row>
+                <ion-col size="6"
+                  ><ion-button expand="full">Bestel</ion-button></ion-col
+                >
+                <ion-col size="6"
+                  ><ion-button expand="full">Info</ion-button></ion-col
+                >
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

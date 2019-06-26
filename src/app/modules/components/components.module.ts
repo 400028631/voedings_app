@@ -1,5 +1,5 @@
-import { AvondetenPage } from './../../pages/user/menu/avondeten/avondeten.page';
-import { LunchPage } from './../../pages/user/menu/lunch/lunch.page';
+import { MenuViewPage } from './../../pages/user/menu/menu-view/menu-view.page';
+import { CommonModule } from '@angular/common';
 import { InformatiePage } from './../../pages/user/menu/informatie/informatie.page';
 import { ItemPage } from './../../pages/user/menu/item/item.page';
 import { NgModule } from '@angular/core';
@@ -9,8 +9,6 @@ import { MenuPage } from 'src/app/pages/user/menu/menu.page';
 import { DrankenPage } from 'src/app/pages/user/dranken/dranken.page';
 import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.page';
 import { CommonModule} from '@angular/common';
-import { OntbijtPage } from 'src/app/pages/user/menu/ontbijt/ontbijt.page';
-import { TussendoortjesPage } from 'src/app/pages/user/menu/tussendoortjes/tussendoortjes.page';
 
 @NgModule({
   imports: [IonicModule.forRoot(), CommonModule],
@@ -20,10 +18,7 @@ import { TussendoortjesPage } from 'src/app/pages/user/menu/tussendoortjes/tusse
     DrankenPage,
     GeschiedenisPage,
     ItemPage,
-    OntbijtPage,
-    LunchPage,
-    AvondetenPage,
-    TussendoortjesPage,
+    MenuViewPage,
   ],
   exports: [
     UserHeaderComponent,
@@ -31,10 +26,7 @@ import { TussendoortjesPage } from 'src/app/pages/user/menu/tussendoortjes/tusse
     DrankenPage,
     GeschiedenisPage,
     ItemPage,
-    OntbijtPage,
-    LunchPage,
-    AvondetenPage,
-    TussendoortjesPage,
+    MenuViewPage,
   ],
 })
 export class ComponentsModule {}
