@@ -11,34 +11,29 @@
         <h1>Ontbijt</h1>
       </ion-col>
     </ion-row>
-    <ion-card>
+    <ion-card *ngFor="let gerecht of testData">
       <ion-row padding>
         <ion-col>
-          <h2>Fruitsalade</h2>
-          <ion-img src="https://www.francescakookt.nl/wp-content/uploads/2017/08/zomerse_fruitsalade_uitgelicht_1.jpg"></ion-img>
+          <h2>{{ gerecht.naam }}</h2>
+          <ion-img [src]="gerecht.fotoPath"></ion-img>
         </ion-col>
         <ion-col>
           <h2>Opties</h2>
           <ion-list>
-            <ion-item>
-              <ion-label>Kiwi</ion-label>
-              <ion-toggle slot="end"></ion-toggle>
-            </ion-item>
-            <ion-item>
-              <ion-label>Druiven</ion-label>
-              <ion-toggle slot="end"></ion-toggle>
-            </ion-item>
-            <ion-item>
-              <ion-label>Aardbei</ion-label>
-              <ion-toggle slot="end"></ion-toggle>
-            </ion-item>              
+            <ion-item *ngFor="let ingredient of gerecht.ingredienten">
+              <ion-label>{{ ingredient }}</ion-label>
+              <ion-toggle checked slot="end"></ion-toggle>
+            </ion-item>             
           </ion-list>
         </ion-col>
       </ion-row>
       <ion-row padding>
-        <ion-col>
+        <ion-col size="10">
           <h3>Beschrijving</h3>
-          <p>Een lekkere fruitsalade</p>
+          <p>{{ gerecht.beschrijving }}</p>
+        </ion-col>
+        <ion-col size="auto" class="ion-align-self-end">
+          <ion-button color="primary">Ingrediënten</ion-button>
         </ion-col>
       </ion-row>
     </ion-card>
