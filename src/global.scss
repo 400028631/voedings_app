@@ -10,13 +10,23 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
-
 .text {
-    &-white {
-        color: white;
-    }
+  &-white {
+    color: white;
+  }
 }
 
 ion-title {
-    text-align: center;
+  text-align: center;
+}
+
+.item_image_holder {
+  max-height: 250px;
+  display: flex;
+  justify-content: center;
+  img {
+    max-height: 250px;
+    height: 100%;
+    width: auto;
+  }
 }

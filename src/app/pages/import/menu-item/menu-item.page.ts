@@ -21,12 +21,13 @@ export class MenuItemPage implements OnInit {
   addToMenu() {
     this.db
       .collection('menu')
-      .doc('l1VjDxpZpXlAOU3tNnFx') //hier moet het id van het menu
+      .doc('djSOkwURlB0DmBbgWBjv') //hier moet het id van het menu
       .collection('menu-item')
       .add({
-        naam: 'product',
+        naam: 'test',
         beschrijving: 'Dit is de beschrijving van een product',
-        fotoPath: null,
+        fotoPath:
+          'https://firebasestorage.googleapis.com/v0/b/voedings-app.appspot.com/o/Healthy_food_1-512.png?alt=media&token=dc6f635d-0980-4642-bf6f-ba6b43eadef7',
         voedingswaarden: [
           {
             naam: 'Vet',
