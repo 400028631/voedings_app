@@ -1,6 +1,9 @@
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Shake } from '@ionic-native/shake/ngx';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-user',
@@ -8,7 +11,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./user.page.scss'],
 })
 export class UserPage implements OnInit {
-  constructor(private data: DataService, private db: AngularFirestore) {}
+  constructor(private data: DataService, private db: AngularFirestore, private shake: Shake, private route:Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const watch = this.shake.startWatch(60).subscribe(() => {
+        this.route.navigate(['dranken']);
+      });
+  }
 }
