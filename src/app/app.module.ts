@@ -14,6 +14,8 @@ import { ComponentsModule } from './modules/components/components.module';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+import { Shake } from '@ionic-native/shake/ngx';
+
 //firebase imports
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -36,6 +38,7 @@ import { InformatiePageModule } from './pages/user/menu/informatie/informatie.mo
   providers: [
     StatusBar,
     SplashScreen,
+    Shake,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
