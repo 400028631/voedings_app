@@ -35,7 +35,7 @@ const routes: Routes = [
         component: GeschiedenisPage,
       },
       {
-        path: 'menu/item/:id',
+        path: 'menu/item/:menu/:id',
         component: ItemPage,
       },
       {

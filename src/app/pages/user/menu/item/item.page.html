@@ -1,36 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>item</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <h1>Ontbijt</h1>
+        <h1>{{ menu_type }}</h1>
       </ion-col>
     </ion-row>
-    <ion-card *ngFor="let gerecht of testData">
+    <ion-card *ngIf="item != null">
       <ion-row padding>
         <ion-col>
-          <h2>{{ gerecht.naam }}</h2>
-          <ion-img [src]="gerecht.fotoPath"></ion-img>
+          <h2>{{ item.data().naam }}</h2>
+          <div *ngIf="item.data().fotoPath != null">
+            <ion-img [src]="item.data().fotoPath"></ion-img>
+          </div>
         </ion-col>
         <ion-col>
           <h2>Opties</h2>
           <ion-list>
-            <ion-item *ngFor="let ingredient of gerecht.ingredienten">
+            <ion-item *ngFor="let ingredient of item.data().ingredienten">
               <ion-label>{{ ingredient }}</ion-label>
               <ion-toggle checked slot="end"></ion-toggle>
-            </ion-item>             
+            </ion-item>
           </ion-list>
         </ion-col>
       </ion-row>
       <ion-row padding>
         <ion-col size="10">
           <h3>Beschrijving</h3>
-          <p>{{ gerecht.beschrijving }}</p>
+          <p>{{ item.data().beschrijving }}</p>
         </ion-col>
         <ion-col size="auto" class="ion-align-self-end">
           <ion-button color="primary">Ingrediënten</ion-button>

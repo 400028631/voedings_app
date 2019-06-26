@@ -11,6 +11,7 @@ import { Route, ActivatedRoute, Router } from '@angular/router';
 export class MenuViewPage implements OnInit {
   items: any = null;
   menu_type: string = null;
+  menu_url: string = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,15 +28,8 @@ export class MenuViewPage implements OnInit {
         if (output.docs.length > 0) {
           var cur = output.docs[0];
           this.menu_type = cur.data().naam;
-          this.db
-            .collection('menu')
-            .doc(cur.id)
-            .collection('menu-item')
-            .valueChanges()
-            .subscribe((onchange) => {
-              this.refreshData(cur.id);
-              console.log('refreshing');
-            });
+          this.menu_url = cur.data().searchterm;
+          this.refreshData(cur.id);
         } else {
           this.router.navigate(['user']);
         }
@@ -51,5 +45,9 @@ export class MenuViewPage implements OnInit {
       .subscribe((items) => {
         this.items = items.docs;
       });
+  }
+
+  gotoInfo(itemid: string) {
+    this.router.navigate([`user/menu/item/${this.menu_url}/${itemid}`]);
   }
 }

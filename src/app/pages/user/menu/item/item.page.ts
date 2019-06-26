@@ -1,3 +1,5 @@
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,79 +8,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item.page.scss'],
 })
 export class ItemPage implements OnInit {
-
-  testData = [{
-    naam: 'Fruitsalade',
-    beschrijving: 'Een heerlijke fruitsalade van het ziekenhuis',
-    maaltijd: 'lunch',
-    fotoPath: 'https://www.francescakookt.nl/wp-content/uploads/2017/08/zomerse_fruitsalade_uitgelicht_1.jpg',
-    voedingswaarden: [
-        {
-          naam: 'Vet',
-          regels: [
-            'Vet totaal 0,9 g',
-          ]
-        },
-        {
-          naam: 'Eiwit',
-          regels: [
-            'Eiwit plantaardig 6 g',
-            'Eiwit totaal 7g'
-          ]
-        },
-        {
-          naam: 'Koolhydraten',
-          regels: [
-            'koolhydraten 23,1 g'
-          ]
-        }
-    ],
-    ingredienten: [
-      'Ananas',
-      'Druiven',
-      'Kiwi\'s',
-      'Aardbeien'
-    ]
-  },
-  {
-    naam: 'Yoghurt van jersey koeien',
-    beschrijving: 'Romige yoghurt van jersey koeien gereseveerd met muesli of granola en honing',
-    maaltijd: 'lunch',
-    fotoPath: 'https://hollandjersey.com/wp-content/uploads/2017/01/product-jersey-yoghurt-1.png',
-    voedingswaarden: [
-        {
-          naam: 'Vet',
-          regels: [
-            'Vet totaal 0,9 g',
-          ]
-        },
-        {
-          naam: 'Eiwit',
-          regels: [
-            'Eiwit plantaardig 6 g',
-            'Eiwit totaal 7g'
-          ]
-        },
-        {
-          naam: 'Koolhydraten',
-          regels: [
-            'koolhydraten 23,1 g'
-          ]
-        }
-    ],
-    ingredienten: [
-      'muesli',
-      'granola',
-      'honing'
-    ]
-  }];
-
-  constructor() { }
+  item: any = null;
+  menu_type: string = '';
+  constructor(
+    private route: ActivatedRoute,
+    private db: AngularFirestore,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
-    // this.testData.ingredienten.forEach(ingredient => {
-    //   this.ingredient.push(ingredient);
-    // });
-  }
+    var menu = this.route.snapshot.paramMap.get('menu');
+    var id = this.route.snapshot.paramMap.get('id');
 
+    this.db
+      .collection('menu', (ref) => ref.where('searchterm', '==', menu))
+      .get()
+      .subscribe((menu) => {
+        if (menu.docs.length > 0) {
+          var menuid = menu.docs[0].id;
+          this.menu_type = menu.docs[0].data().naam;
+          this.db
+            .collection('menu')
+            .doc(menuid)
+            .collection('menu-item')
+            .doc(id)
+            .get()
+            .subscribe((item) => {
+              if (item.data() == undefined) {
+                this.router.navigate(['user']);
+              }
+              this.item = item;
+            });
+        } else {
+          this.router.navigate(['user']);
+        }
+      });
+  }
 }
