@@ -5,11 +5,11 @@
         <h1>{{ menu_type }}</h1>
       </ion-col>
     </ion-row>
-    <ion-card *ngIf="item != null">
+    <ion-card *ngIf="item !== null">
       <ion-row padding>
         <ion-col>
           <h2>{{ item.data().naam }}</h2>
-          <div *ngIf="item.data().fotoPath != null">
+          <div *ngIf="item.data().fotoPath !== null">
             <ion-img [src]="item.data().fotoPath"></ion-img>
           </div>
         </ion-col>

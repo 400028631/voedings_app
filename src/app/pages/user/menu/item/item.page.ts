@@ -34,7 +34,7 @@ export class ItemPage implements OnInit {
             .doc(id)
             .get()
             .subscribe((item) => {
-              if (item.data() == undefined) {
+              if (item.data() === undefined) {
                 this.router.navigate(['user']);
               }
               this.item = item;
