@@ -1,6 +1,8 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { IngredientenComponent } from './ingredienten/ingredienten.component';
 
 @Component({
   selector: 'app-item',
@@ -14,6 +16,7 @@ export class ItemPage implements OnInit {
     private route: ActivatedRoute,
     private db: AngularFirestore,
     private router: Router,
+    private modalCtrl: ModalController
   ) {}
 
   ngOnInit() {
@@ -36,12 +39,26 @@ export class ItemPage implements OnInit {
             .subscribe((item) => {
               if (item.data() === undefined) {
                 this.router.navigate(['user']);
+                return;
               }
               this.item = item;
+              console.log(item.data());
             });
         } else {
           this.router.navigate(['user']);
         }
       });
+  }
+
+  onClickIngredienten() {
+    console.log('test');
+    this.modalCtrl.create({
+      component: IngredientenComponent,
+      componentProps: {
+        ingredienten: this.item.data().ingredienten
+      }
+    }).then(modalEl => {
+      modalEl.present();
+    });
   }
 }
