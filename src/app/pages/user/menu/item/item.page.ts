@@ -50,15 +50,25 @@ export class ItemPage implements OnInit {
       });
   }
 
-  onClickIngredienten() {
-    console.log('test');
-    this.modalCtrl.create({
+  // onClickIngredienten() {
+  //   console.log('test');
+  //   this.modalCtrl.create({
+  //     component: IngredientenComponent,
+  //     // componentProps: {
+  //     //   ingredienten: this.item.data().ingredienten
+  //     // }
+  //   }).then(modalEl => {
+  //     modalEl.present();
+  //   });
+  // }
+
+  async onClickIngredienten() {
+    const modal = await this.modalCtrl.create({
       component: IngredientenComponent,
       componentProps: {
         ingredienten: this.item.data().ingredienten
       }
-    }).then(modalEl => {
-      modalEl.present();
     });
+    modal.present();
   }
 }

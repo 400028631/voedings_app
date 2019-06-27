@@ -22,7 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+  entryComponents: [IngredientenComponent],
   declarations: [ItemPage, IngredientenComponent],
-  entryComponents: [IngredientenComponent]
 })
 export class ItemPageModule {}
