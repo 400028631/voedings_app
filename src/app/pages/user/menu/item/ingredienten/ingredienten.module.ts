@@ -5,14 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ItemPage } from './item.page';
-import { IngredientenPageModule } from './ingredienten/ingredienten.module';
+import { IngredientenPage } from './ingredienten.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ItemPage
-  }
+    component: IngredientenPage,
+  },
 ];
 
 @NgModule({
@@ -20,11 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  entryComponents: [
-    IngredientenPageModule
-  ],
-  declarations: [ItemPage, IngredientenPageModule],
+  declarations: [IngredientenPage],
 })
-export class ItemPageModule {}
+export class IngredientenPageModule {}

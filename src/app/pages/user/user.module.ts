@@ -1,3 +1,4 @@
+import { SearchPage } from './search/search.page';
 import { MenuViewPage } from './menu/menu-view/menu-view.page';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'menu/type/:type',
         component: MenuViewPage,
+      },
+      {
+        path: 'search',
+        component: SearchPage,
       },
       {
         path: '**',

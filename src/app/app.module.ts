@@ -15,11 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 import { Shake } from '@ionic-native/shake/ngx';
+import { InformatiePageModule } from './pages/user/menu/informatie/informatie.module';
+import { IngredientenPageModule } from './pages/user/menu/item/ingredienten/ingredienten.module';
 
 //firebase imports
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { InformatiePageModule } from './pages/user/menu/informatie/informatie.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +35,7 @@ import { InformatiePageModule } from './pages/user/menu/informatie/informatie.mo
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     InformatiePageModule,
+    IngredientenPageModule,
   ],
   providers: [
     StatusBar,

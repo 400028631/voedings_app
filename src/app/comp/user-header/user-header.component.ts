@@ -1,3 +1,4 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -21,5 +22,10 @@ export class UserHeaderComponent implements OnInit {
   }
   geschiedenis() {
     this.router.navigate(['user/geschiedenis']);
+  }
+
+  changeSearchTerm($event) {
+    var value = $event.detail.value;
+    // this.router.navigate(['user/search']);
   }
 }
