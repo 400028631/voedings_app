@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class UserHeaderComponent implements OnInit {
   constructor(private router: Router, private data: DataService) {}
 
+  searchValue: string = '';
   ngOnInit() {}
 
   menu() {
@@ -25,6 +26,10 @@ export class UserHeaderComponent implements OnInit {
 
   changeSearchTerm($event) {
     var value = $event.detail.value;
-    // this.router.navigate(['user/search']);
+    this.searchValue = value;
+  }
+
+  search() {
+    this.router.navigate(['user/search', { term: this.searchValue }]);
   }
 }
