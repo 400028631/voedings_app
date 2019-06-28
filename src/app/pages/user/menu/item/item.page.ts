@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IngredientenPageModule } from './ingredienten/ingredienten.module';
+import { IngredientenPage } from './ingredienten/ingredienten.page';
 
 @Component({
   selector: 'app-item',
@@ -16,7 +17,7 @@ export class ItemPage implements OnInit {
     private route: ActivatedRoute,
     private db: AngularFirestore,
     private router: Router,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
   ) {}
 
   ngOnInit() {
@@ -64,10 +65,10 @@ export class ItemPage implements OnInit {
 
   async onClickIngredienten() {
     const modal = await this.modalCtrl.create({
-      component: IngredientenPageModule,
+      component: IngredientenPage,
       componentProps: {
-        ingredienten: this.item.data().ingredienten
-      }
+        ingredienten: this.item.data().ingredienten,
+      },
     });
     modal.present();
   }
