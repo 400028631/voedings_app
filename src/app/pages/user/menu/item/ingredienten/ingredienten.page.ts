@@ -6,12 +6,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./ingredienten.page.scss'],
 })
 export class IngredientenPage implements OnInit {
-  @Input() ingredienten: any;
+  @Input() voedingswaarden: any;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.ingredienten);
+    console.log(this.voedingswaarden);
   }
-
 }
