@@ -6,12 +6,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { GeschiedenisPage } from './geschiedenis.page';
+import { LogpaginaPage } from 'src/app/logpagina/logpagina.page';
 
 const routes: Routes = [
   {
     path: '',
     component: GeschiedenisPage
-  }
+  },
 ];
 
 @NgModule({
@@ -19,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  declarations: [GeschiedenisPage]
+  declarations: [GeschiedenisPage, LogpaginaPage],
+  entryComponents: [LogpaginaPage]
 })
 export class GeschiedenisPageModule {}
