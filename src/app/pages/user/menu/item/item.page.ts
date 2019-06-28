@@ -2,7 +2,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { IngredientenComponent } from './ingredienten/ingredienten.component';
+import { IngredientenPageModule } from './ingredienten/ingredienten.module';
 
 @Component({
   selector: 'app-item',
@@ -64,7 +64,7 @@ export class ItemPage implements OnInit {
 
   async onClickIngredienten() {
     const modal = await this.modalCtrl.create({
-      component: IngredientenComponent,
+      component: IngredientenPageModule,
       componentProps: {
         ingredienten: this.item.data().ingredienten
       }
