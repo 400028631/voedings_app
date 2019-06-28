@@ -1,6 +1,5 @@
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
-import { ViewController } from '@ionic/core';
 
 @Component({
   selector: 'app-informatie',
