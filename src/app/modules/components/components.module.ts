@@ -1,3 +1,4 @@
+import { SearchPage } from './../../pages/user/search/search.page';
 import { MenuViewPage } from './../../pages/user/menu/menu-view/menu-view.page';
 import { CommonModule } from '@angular/common';
 import { InformatiePage } from './../../pages/user/menu/informatie/informatie.page';
@@ -18,6 +19,7 @@ import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.p
     GeschiedenisPage,
     ItemPage,
     MenuViewPage,
+    SearchPage,
   ],
   exports: [
     UserHeaderComponent,
@@ -26,6 +28,7 @@ import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.p
     GeschiedenisPage,
     ItemPage,
     MenuViewPage,
+    SearchPage,
   ],
 })
 export class ComponentsModule {}
