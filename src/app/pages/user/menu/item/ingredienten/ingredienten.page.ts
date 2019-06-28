@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-ingredienten',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ingredienten.page.scss'],
 })
 export class IngredientenPage implements OnInit {
+  @Input() ingredienten: any;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.ingredienten);
   }
 
 }
