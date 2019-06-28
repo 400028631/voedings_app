@@ -67,7 +67,7 @@ export class ItemPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: IngredientenPage,
       componentProps: {
-        ingredienten: this.item.data().ingredienten,
+        voedingswaarden: this.item.data().voedingswaarden,
       },
     });
     modal.present();
