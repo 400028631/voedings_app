@@ -3,7 +3,6 @@ import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'user-header',
   templateUrl: './user-header.component.html',
