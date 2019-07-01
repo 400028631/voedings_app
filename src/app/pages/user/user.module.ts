@@ -44,7 +44,7 @@ const routes: Routes = [
         component: MenuViewPage,
       },
       {
-        path: 'search',
+        path: 'search/:term',
         component: SearchPage,
       },
       {

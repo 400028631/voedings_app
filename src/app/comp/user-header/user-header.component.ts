@@ -3,7 +3,6 @@ import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'user-header',
   templateUrl: './user-header.component.html',
@@ -31,6 +30,6 @@ export class UserHeaderComponent implements OnInit {
   }
 
   search() {
-    this.router.navigate(['user/search', { term: this.searchValue }]);
+    this.router.navigate([`user/search/${this.searchValue}`]);
   }
 }

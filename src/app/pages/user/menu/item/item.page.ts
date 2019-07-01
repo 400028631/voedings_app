@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IngredientenPageModule } from './ingredienten/ingredienten.module';
 import { IngredientenPage } from './ingredienten/ingredienten.page';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-item',
@@ -18,6 +19,7 @@ export class ItemPage implements OnInit {
     private db: AngularFirestore,
     private router: Router,
     private modalCtrl: ModalController,
+    private location: Location,
   ) {}
 
   ngOnInit() {
@@ -71,5 +73,9 @@ export class ItemPage implements OnInit {
       },
     });
     modal.present();
+  }
+
+  back() {
+    this.location.back();
   }
 }
