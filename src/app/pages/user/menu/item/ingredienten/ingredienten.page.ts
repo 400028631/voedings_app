@@ -7,10 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class IngredientenPage implements OnInit {
   @Input() voedingswaarden: any;
+  
+  voedingswaardenI: any;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.voedingswaarden);
+    this.voedingswaardenI = this.voedingswaarden;
+    console.log(this.voedingswaardenI);
   }
 }
