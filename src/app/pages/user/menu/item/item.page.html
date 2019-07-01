@@ -2,6 +2,9 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <ion-button color="light" (click)="back()"
+          ><ion-icon name="arrow-back"></ion-icon> Terug</ion-button
+        >
         <h1>{{ menu_type }}</h1>
       </ion-col>
     </ion-row>
@@ -29,7 +32,9 @@
           <p>{{ item.data().beschrijving }}</p>
         </ion-col>
         <ion-col size="auto" class="ion-align-self-end">
-          <ion-button (click)="onClickIngredienten()" color="primary">Ingrediënten</ion-button>
+          <ion-button (click)="onClickIngredienten()" color="primary"
+            >Ingrediënten</ion-button
+          >
         </ion-col>
       </ion-row>
     </ion-card>
