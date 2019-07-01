@@ -5,5 +5,19 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row *ngFor="let ingredient of ingredienten">
+      <ion-col>
+        {{ ingredient.naam }}
+      </ion-col>
+      <ion-col>
+        <p *ngFor="let regel of ingredient.regels">{{ regel }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        waarom de zie ik niks {{ ingredienten[0].name }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
