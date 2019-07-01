@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { MenuPage } from 'src/app/pages/user/menu/menu.page';
 import { DrankenPage } from 'src/app/pages/user/dranken/dranken.page';
 import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.page';
+import { ItemComponent } from 'src/app/pages/user/search/item/item.component';
 
 @NgModule({
   imports: [IonicModule.forRoot(), CommonModule],
@@ -20,6 +21,7 @@ import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.p
     ItemPage,
     MenuViewPage,
     SearchPage,
+    ItemComponent,
   ],
   exports: [
     UserHeaderComponent,
@@ -29,6 +31,7 @@ import { GeschiedenisPage } from 'src/app/pages/user/geschiedenis/geschiedenis.p
     ItemPage,
     MenuViewPage,
     SearchPage,
+    ItemComponent,
   ],
 })
 export class ComponentsModule {}
