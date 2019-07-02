@@ -10,7 +10,7 @@
         <ion-card text-center padding>
           <h2>Ontbijt</h2>
           <img src="https://www.proud2bme.nl/fgw.php?action=media&id=233237" />
-          <ion-button color="success" (click)="goto('user/menu/type/ontbijt')" 
+          <ion-button id="Breakfast" [attr.disabled]="!TimeCheck('Breakfast')" color="success" (click)="goto('user/menu/type/ontbijt')" 
             >Bekijk menu</ion-button
           >
         </ion-card>
@@ -24,7 +24,7 @@
           <img
             src="https://simpleveganblog.com/wp-content/uploads/2019/02/Vegan-blt-sandwich-5.jpg"
           />
-          <ion-button (click)="goto('user/menu/type/lunch')" color="success"
+          <ion-button id="Lunch" [attr.disabled]="!TimeCheck('Lunch')" (click)="goto('user/menu/type/lunch')" color="success"
             >Bekijk menu</ion-button
           >
         </ion-card>
@@ -38,7 +38,7 @@
           <img
             src="https://www.eetcaferaadhuys.nl/wp-content/uploads/2018/06/food_7.jpg"
           />
-          <ion-button (click)="goto('user/menu/type/avondeten')" color="success"
+          <ion-button id="Dinner" [attr.disabled]="!TimeCheck('Dinner')" (click)="goto('user/menu/type/avondeten')" color="success"
             >Bekijk menu</ion-button
           >
         </ion-card>
