@@ -28,7 +28,9 @@ export class LoginPage implements OnInit {
     private db: AngularFirestore,
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.data.logout();
+  }
 
   //login function
   login() {

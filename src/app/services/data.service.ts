@@ -24,6 +24,7 @@ export class DataService {
       .subscribe((patient) => {
         if (patient.docs.length > 0) {
           //ingelogd
+          localStorage.setItem('token', patient.docs[0].id);
           this.userData = patient.docs[0].data();
           this.router.navigate(['user']);
         } else {
@@ -31,5 +32,10 @@ export class DataService {
           alert('Dit klopt niet');
         }
       });
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 }
