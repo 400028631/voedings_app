@@ -25,6 +25,8 @@ export class UserPage implements OnInit {
     if (!localStorage.getItem('token')) {
       this.data.logout();
       alert('Log in');
+    } else {
+      this.data.getData();
     }
   }
 }

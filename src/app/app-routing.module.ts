@@ -19,8 +19,6 @@ const routes: Routes = [
 
   //route under here should be 404
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'menu-view', loadChildren: './pages/user/menu/menu-view/menu-view.module#MenuViewPageModule' },
-  { path: 'logpagina', loadChildren: './logpagina/logpagina.module#LogpaginaPageModule' },
 ];
 
 @NgModule({

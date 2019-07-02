@@ -1,3 +1,4 @@
+import { BestellingPage } from './../../pages/user/bestelling/bestelling.page';
 import { SearchPage } from './../../pages/user/search/search.page';
 import { MenuViewPage } from './../../pages/user/menu/menu-view/menu-view.page';
 import { CommonModule } from '@angular/common';
@@ -22,6 +23,7 @@ import { ItemComponent } from 'src/app/pages/user/search/item/item.component';
     MenuViewPage,
     SearchPage,
     ItemComponent,
+    BestellingPage,
   ],
   exports: [
     UserHeaderComponent,
@@ -32,6 +34,7 @@ import { ItemComponent } from 'src/app/pages/user/search/item/item.component';
     MenuViewPage,
     SearchPage,
     ItemComponent,
+    BestellingPage,
   ],
 })
 export class ComponentsModule {}
