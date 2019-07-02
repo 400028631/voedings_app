@@ -9,6 +9,7 @@ import { MenuPage } from './menu.page';
 import { ItemPage } from './item/item.page';
 import { ComponentsModule } from 'src/app/modules/components/components.module';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -26,4 +27,5 @@ const routes: Routes = [
   ],
   declarations: [MenuPage],
 })
-export class MenuPageModule {}
+export class MenuPageModule {
+}
