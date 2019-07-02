@@ -22,28 +22,78 @@ export class DataService {
       .collection('bestelling', (ref) =>
         ref.where('nummer', '==', localStorage.getItem('token')),
       )
-      .get()
-      .subscribe((output) => {
+      .valueChanges()
+      .subscribe((data) => {
         this.getData();
       });
   }
 
   getData() {
     this.db
-      .collection('bestelling', (ref) =>
-        ref.where('nummer', '==', localStorage.getItem('token')),
-      )
+      .collection('bestelling')
+      .doc(localStorage.getItem('token'))
       .get()
       .subscribe((bestelling) => {
-        if (bestelling.docs.length > 0) {
-          this.bestelling = bestelling.docs[0];
+        if (bestelling.data() != undefined) {
+          this.bestelling = bestelling;
         } else {
-          this.bestelling = null;
+          //create
+          this.db
+            .collection('bestelling')
+            .doc(localStorage.getItem('token'))
+            .set({
+              items: [],
+            });
         }
       });
   }
 
-  itemToevoegen(menu: string, item: string, uizondering: any) {}
+  itemToevoegen(menu: string, item: string, uitzonderingen: any) {
+    var newuitzondering = [];
+    uitzonderingen.forEach((uitzondering) => {
+      if (uitzondering.use == false) {
+        newuitzondering.push(uitzondering);
+      }
+    });
+
+    this.db
+      .collection('menu', (ref) => ref.where('naam', '==', menu))
+      .get()
+      .subscribe((menu) => {
+        if (menu.docs.length > 0) {
+          this.db
+            .collection('menu')
+            .doc(menu.docs[0].id)
+            .collection('menu-item')
+            .doc(item)
+            .get()
+            .subscribe((item) => {
+              var newitem = {
+                uitzondering: newuitzondering,
+                item: {
+                  id: item.id,
+                  data: item.data(),
+                },
+                amount: 1,
+              };
+
+              if (this.bestelling != null) {
+                var cur = this.bestelling.data().items;
+                cur.push(newitem);
+                this.db
+                  .collection('bestelling')
+                  .doc(this.bestelling.id)
+                  .update({
+                    items: cur,
+                  })
+                  .then(() => {
+                    this.getData();
+                  });
+              }
+            });
+        }
+      });
+  }
 
   login(nummer: number) {
     this.db

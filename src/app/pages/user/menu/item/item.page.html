@@ -3,7 +3,8 @@
     <ion-row>
       <ion-col>
         <ion-button color="light" (click)="back()"
-          ><ion-icon color="success" name="arrow-back"></ion-icon> Terug</ion-button
+          ><ion-icon color="success" name="arrow-back"></ion-icon>
+          Terug</ion-button
         >
         <h1>{{ menu_type }}</h1>
       </ion-col>
@@ -21,7 +22,12 @@
           <ion-list>
             <ion-item *ngFor="let ingredient of item.data().ingredienten">
               <ion-label>{{ ingredient }}</ion-label>
-              <ion-toggle color="success"checked slot="end"></ion-toggle>
+              <ion-toggle
+                (ionChange)="ingredientchange($event, ingredient)"
+                color="success"
+                checked
+                slot="end"
+              ></ion-toggle>
             </ion-item>
           </ion-list>
         </ion-col>
@@ -35,7 +41,7 @@
           <ion-button (click)="onClickIngredienten()" color="success"
             >Ingrediënten</ion-button
           >
-          <ion-button color="success"
+          <ion-button (click)="bestel()" color="success"
             >Bestel gerecht</ion-button
           >
         </ion-col>
