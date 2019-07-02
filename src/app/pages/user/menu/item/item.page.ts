@@ -1,3 +1,4 @@
+import { DataService } from './../../../../services/data.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -13,19 +14,23 @@ import { Location } from '@angular/common';
 })
 export class ItemPage implements OnInit {
   item: any = null;
+  item_id: string = '';
   menu_type: string = '';
+
+  ingredienten: any = [];
   constructor(
     private route: ActivatedRoute,
     private db: AngularFirestore,
     private router: Router,
     private modalCtrl: ModalController,
     private location: Location,
+    private data: DataService,
   ) {}
 
   ngOnInit() {
     var menu = this.route.snapshot.paramMap.get('menu');
     var id = this.route.snapshot.paramMap.get('id');
-
+    this.item_id = id;
     this.db
       .collection('menu', (ref) => ref.where('searchterm', '==', menu))
       .get()
@@ -45,12 +50,35 @@ export class ItemPage implements OnInit {
                 return;
               }
               this.item = item;
-              console.log(item.data());
             });
         } else {
           this.router.navigate(['user']);
         }
       });
+  }
+
+  ingredientchange(event, ingredient) {
+    const index = this.ingredienten.findIndex((e) => e.naam === ingredient);
+    if (index === -1) {
+      this.ingredienten.push({
+        naam: ingredient,
+        use: event.detail.checked,
+      });
+    } else {
+      this.ingredienten[index] = {
+        naam: ingredient,
+        use: event.detail.checked,
+      };
+    }
+  }
+
+  async bestel() {
+    await this.data.itemToevoegen(
+      this.menu_type,
+      this.item_id,
+      this.ingredienten,
+    );
+    this.back();
   }
 
   // onClickIngredienten() {
