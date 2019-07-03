@@ -137,7 +137,6 @@ export class DataService {
   }
 
   deleteProduct(id: string) {
-    console.log(id);
     this.db
       .collection('winkelwagen')
       .doc(localStorage.getItem('token'))
@@ -156,7 +155,27 @@ export class DataService {
           .update({
             items: newitems,
           });
-        console.log('done deleting');
+      });
+  }
+
+  placeOrder() {
+    var order = this.bestelling.data();
+    order.patient = localStorage.getItem('token');
+    order.time = new Date();
+
+    this.db
+      .collection('bestelling')
+      .add(order)
+      .then(() => {
+        this.db
+          .collection('winkelwagen')
+          .doc(localStorage.getItem('token'))
+          .update({
+            items: [],
+          })
+          .then(() => {
+            this.presentToast('Uw bestelling is geplaatst');
+          });
       });
   }
 
