@@ -27,7 +27,9 @@ export class BestellingPage implements OnInit {
       .subscribe(() => {
         this.data.getData(() => {
           this.items = this.data.bestelling.data().items;
-          console.log('change');
+          if (this.items.length <= 0) {
+            this.modalClose();
+          }
         });
       });
   }
