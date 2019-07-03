@@ -23,7 +23,6 @@ import { ItemComponent } from 'src/app/pages/user/search/item/item.component';
     MenuViewPage,
     SearchPage,
     ItemComponent,
-    BestellingPage,
   ],
   exports: [
     UserHeaderComponent,
@@ -34,7 +33,6 @@ import { ItemComponent } from 'src/app/pages/user/search/item/item.component';
     MenuViewPage,
     SearchPage,
     ItemComponent,
-    BestellingPage,
   ],
 })
 export class ComponentsModule {}

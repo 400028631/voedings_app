@@ -1,3 +1,4 @@
+import { BestellingPageModule } from './pages/user/bestelling/bestelling.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -36,6 +37,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFirestoreModule,
     InformatiePageModule,
     IngredientenPageModule,
+    BestellingPageModule,
   ],
   providers: [
     StatusBar,

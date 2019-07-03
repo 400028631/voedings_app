@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+import { ToastController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -17,35 +20,68 @@ export class DataService {
     private http: HttpClient,
     private router: Router,
     private db: AngularFirestore,
+    private toastController: ToastController,
+    private modalController: ModalController,
   ) {
     this.db
-      .collection('bestelling', (ref) =>
+      .collection('winkelwagen')
+      .valueChanges()
+      .subscribe(() => {
+        this.getData();
+      });
+
+    this.db
+      .collection('patient', (ref) =>
         ref.where('nummer', '==', localStorage.getItem('token')),
       )
-      .valueChanges()
-      .subscribe((data) => {
-        this.getData();
+      .get()
+      .subscribe((patient) => {
+        if (patient.docs.length > 0) {
+          this.userData = patient.docs[0];
+        } else {
+          this.userData = null;
+        }
       });
   }
 
-  getData() {
+  getData(cb?: () => void) {
     this.db
-      .collection('bestelling')
+      .collection('winkelwagen')
       .doc(localStorage.getItem('token'))
       .get()
       .subscribe((bestelling) => {
         if (bestelling.data() != undefined) {
           this.bestelling = bestelling;
+          if (cb) {
+            cb();
+          }
         } else {
           //create
           this.db
-            .collection('bestelling')
+            .collection('winkelwagen')
             .doc(localStorage.getItem('token'))
             .set({
               items: [],
+            })
+            .then((doc) => {
+              this.getData();
             });
         }
       });
+  }
+
+  getUserData() {
+    if (localStorage.getItem('userId')) {
+      this.db
+        .collection('patient')
+        .doc(localStorage.getItem('userId'))
+        .get()
+        .subscribe((patient) => {
+          this.userData = patient;
+        });
+    } else {
+      this.userData = null;
+    }
   }
 
   itemToevoegen(menu: string, item: string, uitzonderingen: any) {
@@ -75,24 +111,61 @@ export class DataService {
                   data: item.data(),
                 },
                 amount: 1,
+                randomid: this.guidGenerator(),
               };
 
               if (this.bestelling != null) {
                 var cur = this.bestelling.data().items;
                 cur.push(newitem);
                 this.db
-                  .collection('bestelling')
+                  .collection('winkelwagen')
                   .doc(this.bestelling.id)
                   .update({
                     items: cur,
                   })
                   .then(() => {
                     this.getData();
+                    this.presentToast('Product toegevoegd.');
+                  })
+                  .catch(() => {
+                    this.presentToast('Er is iets fout gegaan');
                   });
               }
             });
         }
       });
+  }
+
+  deleteProduct(id: string) {
+    console.log(id);
+    this.db
+      .collection('winkelwagen')
+      .doc(localStorage.getItem('token'))
+      .get()
+      .subscribe((winkelwagen) => {
+        var curitems = winkelwagen.data().items;
+        var newitems = [];
+        curitems.forEach((item) => {
+          if (item.randomid != id) {
+            newitems.push(item);
+          }
+        });
+        this.db
+          .collection('winkelwagen')
+          .doc(localStorage.getItem('token'))
+          .update({
+            items: newitems,
+          });
+        console.log('done deleting');
+      });
+  }
+
+  async presentToast(input: string) {
+    const toast = await this.toastController.create({
+      message: input,
+      duration: 2000,
+    });
+    toast.present();
   }
 
   login(nummer: number) {
@@ -103,6 +176,7 @@ export class DataService {
         if (patient.docs.length > 0) {
           //ingelogd
           localStorage.setItem('token', patient.docs[0].data().nummer);
+          localStorage.setItem('userId', patient.docs[0].id);
           this.userData = patient.docs[0].data();
           this.router.navigate(['user']);
         } else {
@@ -112,8 +186,35 @@ export class DataService {
       });
   }
 
+  async presentModal(page: any) {
+    const modal = await this.modalController.create({
+      component: page,
+    });
+    return await modal.present();
+  }
+
   logout() {
     localStorage.clear();
     this.router.navigate(['login']);
+  }
+
+  guidGenerator() {
+    var S4 = function() {
+      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+    };
+    return (
+      S4() +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      '-' +
+      S4() +
+      S4() +
+      S4()
+    );
   }
 }

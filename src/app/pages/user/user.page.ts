@@ -1,3 +1,4 @@
+import { BestellingPage } from './bestelling/bestelling.page';
 import { DataService } from './../../services/data.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -28,5 +29,11 @@ export class UserPage implements OnInit {
     } else {
       this.data.getData();
     }
+
+    this.data.getUserData();
+  }
+
+  openBestellingModal() {
+    this.data.presentModal(BestellingPage);
   }
 }
