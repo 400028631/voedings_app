@@ -10,8 +10,8 @@ import { BestellingPage } from './bestelling.page';
 const routes: Routes = [
   {
     path: '',
-    component: BestellingPage
-  }
+    component: BestellingPage,
+  },
 ];
 
 @NgModule({
@@ -19,8 +19,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  declarations: [BestellingPage]
+  declarations: [BestellingPage],
 })
 export class BestellingPageModule {}

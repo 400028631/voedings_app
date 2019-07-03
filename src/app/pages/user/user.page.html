@@ -8,8 +8,15 @@
   <ion-router-outlet></ion-router-outlet>
 </ion-content>
 
-<ion-footer>
+<ion-footer
+  *ngIf="data.bestelling != null && data.bestelling.data().items.length > 0"
+  (click)="openBestellingModal()"
+>
   <ion-toolbar>
-    <ion-title>Bestelling bekijken</ion-title>
+    <ion-title
+      >Bestelling bekijken ({{
+        data.bestelling.data().items.length
+      }})</ion-title
+    >
   </ion-toolbar>
 </ion-footer>

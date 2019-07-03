@@ -1,9 +1,49 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>bestelling</ion-title>
+    <ion-title>Bestelling</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="modalClose()">
+        Sluiten
+        <ion-icon slot="end" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <section *ngIf="userdata != null">
+    <div padding>
+      Naam: {{ userdata.data().voornaam }} {{ userdata.data().achternaam }}
+    </div>
+    <b padding>Bestelling: </b>
 
+    <div class="items" *ngIf="items != null">
+      <ion-item *ngFor="let item of items">
+        <ion-label>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="6">
+                <b>{{ item?.item?.data?.naam }}</b>
+                <div style="margin-left: 15px;">
+                  <p
+                    *ngFor="let uitzondering of item?.uitzondering"
+                    style="margin: 0;"
+                  >
+                    - Geen {{ uitzondering?.naam }}
+                  </p>
+                </div>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button
+                  color="danger"
+                  (click)="deleteProduct(item?.randomid)"
+                  >Verwijderen</ion-button
+                >
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-label>
+      </ion-item>
+    </div>
+  </section>
 </ion-content>
