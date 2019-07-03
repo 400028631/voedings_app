@@ -8,19 +8,24 @@
         <ion-col>
           <ion-button color="success" (click)="dranken()">Dranken</ion-button>
         </ion-col>
-        <ion-col>
+        <!-- <ion-col>
           <ion-button color="success" (click)="geschiedenis()">Geschiedenis</ion-button>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
     </ion-col>
     <ion-col size="6">
       <ion-grid>
         <ion-row>
           <ion-col size="8">
-            <ion-searchbar (ionChange)="changeSearchTerm($event)" placeholder="Zoeken"></ion-searchbar>
+            <ion-searchbar
+              (ionChange)="changeSearchTerm($event)"
+              placeholder="Zoeken"
+            ></ion-searchbar>
           </ion-col>
           <ion-col size="4">
-            <ion-button (click)="search()" expand="full" color="success">Zoeken</ion-button>
+            <ion-button (click)="search()" expand="full" color="success"
+              >Zoeken</ion-button
+            >
           </ion-col>
         </ion-row>
       </ion-grid>
