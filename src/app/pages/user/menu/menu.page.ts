@@ -4,6 +4,7 @@ import { InformatiePage } from './informatie/informatie.page';
 import { Router } from '@angular/router';
 
 import * as Moment from 'moment';
+
 import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
